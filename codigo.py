@@ -1,11 +1,3 @@
-#PASSO 4 - Abrir Base de Dados
-
-#PASSO 5 - Cadastrar um produto
-
-#PASSO 6 - Repetir paa todos os produtos
-
-#-------------------------------------------------
-
 #Após instalar a lib de automação nas dependencias do projeto via terminal como
 #pip install pyautogui
 
@@ -55,30 +47,43 @@ time.sleep(2)
 #Chamar o pandas com o metodo read_csv
 #Criar uma variavel para poder manipular esses dados
 tabela = pandas.read_csv("produtos.csv")
+
+#PASSO 4 - Abrir Base de Dados
 print(tabela)
 
-pyautogui.press("tab")
+#PASSO 5 - Cadastrar um produto manualamente
 
-codigo = 'MOLO00025'
-marca = 'Logitec'
-tipo = 'Mouse'
-categoria = '1'
-preco_unitario = '25.95'
-custo = '6.50'
-obs = ''
 
-pyautogui.write(codigo)
-pyautogui.press("tab")
-pyautogui.write(marca)
-pyautogui.press("tab")
-pyautogui.write(tipo)
-pyautogui.press("tab")
-pyautogui.write(categoria)
-pyautogui.press("tab")
-pyautogui.write(preco_unitario)
-pyautogui.press("tab")
-pyautogui.write(custo)
-pyautogui.press("tab")
-pyautogui.write(obs)
-pyautogui.press("tab")
-pyautogui.press("enter")
+#PASSO 6 - Repetir para todos os produtos
+#criar um for pra percorrer as linhas da tabela
+#a cada iteração são realizados os comandos inseridos dentro do for
+for linha in tabela.index:
+  #variaveis pra armazenar as infos da tabela localizadas na posicao[linha,"nomecolunanabasedados"]
+  in_codigo = tabela.loc[linha,"codigo"]
+  in_marca = tabela.loc[linha,"marca"]
+  in_tipo = tabela.loc[linha,"tipo"]
+  in_categoria = str(tabela.loc[linha,"categoria"])
+  in_preco_unitario = str(tabela.loc[linha,"preco_unitario"])
+  in_custo = str(tabela.loc[linha,"custo"])
+  in_obs = str(tabela.loc[linha,"obs"])
+
+  #comandos a serem executados
+  pyautogui.click(x=1092, y=297)
+  pyautogui.write(in_codigo)
+  pyautogui.press("tab")
+  pyautogui.write(in_marca)
+  pyautogui.press("tab")
+  pyautogui.write(in_tipo)
+  pyautogui.press("tab")
+  pyautogui.write(in_categoria)
+  pyautogui.press("tab")
+  pyautogui.write(in_preco_unitario)
+  pyautogui.press("tab")
+  pyautogui.write(in_custo)
+  pyautogui.press("tab")
+  if in_obs != 'nan':
+    pyautogui.write(in_obs)
+  pyautogui.press("tab")
+  pyautogui.press("enter")
+
+  pyautogui.scroll(10000)
