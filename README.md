@@ -1,1 +1,3 @@
-# 2025-HASHTAG-PYTHON-POWERUP
+# 2025-ESTUDO-PYTHON
+## CURSO: Semana Python | ESCOLA: Hashtag Treinamentos
+### DEV: Romulo Rosa 
