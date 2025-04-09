@@ -1,19 +1,22 @@
-#PASSO 3 - Importar Base de Dados
-
 #PASSO 4 - Abrir Base de Dados
 
 #PASSO 5 - Cadastrar um produto
 
 #PASSO 6 - Repetir paa todos os produtos
 
-#após instalar a lib de automação nas dependencias do projeto via terminal como
+#-------------------------------------------------
+
+#Após instalar a lib de automação nas dependencias do projeto via terminal como
 #pip install pyautogui
 
 #importamos a lib de automatação
 import pyautogui
 
-#lib parra controle das execuções
+#importamos a lib pra contolar execuções
 import time
+
+#importamos a lib pra importar a base de dados
+import pandas
 
 #Definir um delay entre os comandos
 pyautogui.PAUSE = 0.35
@@ -42,3 +45,39 @@ pyautogui.press("enter")
 # pyautogui.click(x=1097, y=509)
 # pyautogui.write("Admin#123")
 # pyautogui.click(x=1265, y=562)
+
+#PASSO 3 - Importar Base de Dados
+time.sleep(2)
+
+#instalar o pandas - pip install pandas via terminal
+#importar no topo do projeto
+
+#Chamar o pandas com o metodo read_csv
+#Criar uma variavel para poder manipular esses dados
+tabela = pandas.read_csv("produtos.csv")
+print(tabela)
+
+pyautogui.press("tab")
+
+codigo = 'MOLO00025'
+marca = 'Logitec'
+tipo = 'Mouse'
+categoria = '1'
+preco_unitario = '25.95'
+custo = '6.50'
+obs = ''
+
+pyautogui.write(codigo)
+pyautogui.press("tab")
+pyautogui.write(marca)
+pyautogui.press("tab")
+pyautogui.write(tipo)
+pyautogui.press("tab")
+pyautogui.write(categoria)
+pyautogui.press("tab")
+pyautogui.write(preco_unitario)
+pyautogui.press("tab")
+pyautogui.write(custo)
+pyautogui.press("tab")
+pyautogui.write(obs)
+pyautogui.press("tab")
